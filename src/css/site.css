@@ -1,0 +1,42 @@
+html, body {
+  height: 100%;
+}
+
+.sidebar {
+  width: 300px;
+  height: 100%;
+  position: absolute;
+  z-index: 99;
+  border-right: 1px solid #eee;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.rootpane {
+  padding-left: 300px;
+  height: 100%;
+}
+
+@media (min-width: 576px) {
+  .navbar-toggler {
+    display: none;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .rootpane {
+    padding-left: 0;
+  }
+}
+
+body[view="login"] .sidebar {
+  display: none;
+}
+
+body[view="login"] .rootpane {
+  padding-left: 0;
+}
