@@ -45,4 +45,4 @@ module.exports = function (env, { mode = 'development' }) {
       new HtmlWebpackPlugin({ template: 'index.html' }),
     ],
   };
-}
+};
