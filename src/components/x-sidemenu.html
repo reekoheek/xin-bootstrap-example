@@ -17,13 +17,19 @@
 
 <div id="accordion">
   <div class="card">
+    <div class="list-group">
+      <a href="#!/" class="list-group-item"><span class="oi oi-home"></span> Home</a>
+    </div>
+  </div>
+
+  <div class="card">
     <a class="card-header" data-toggle="collapse" data-target="#collapse1">Master Data</a>
 
     <div id="collapse1" class="collapse show list-group" data-parent="#accordion">
-      <a href="#!/user" class="list-group-item"><span class="oi oi-person"></span> User</a>
-      <a href="#" class="list-group-item"><span class="oi oi-shield"></span> Role</a>
+      <a href="#!/user/list" class="list-group-item"><span class="oi oi-person"></span> User</a>
     </div>
   </div>
+
   <div class="card">
     <a class="card-header" data-toggle="collapse" data-target="#collapse2">Custom</a>
 
@@ -39,10 +45,8 @@
   </div>
 
   <div class="card">
-      <a class="card-header" data-toggle="collapse" data-target="#collapse3">Settings</a>
-
-      <div id="collapse3" class="collapse list-group" data-parent="#accordion">
-        <a href="#!/login" class="list-group-item"><span class="oi oi-account-logout"></span> Logout</a>
-      </div>
+    <div class="list-group">
+      <a href="#!/login" class="list-group-item"><span class="oi oi-account-logout"></span> Logout</a>
     </div>
+  </div>
 </div>

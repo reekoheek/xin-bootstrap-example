@@ -1,6 +1,8 @@
 import { define } from '@xinix/xin';
 import { View } from '@xinix/xin/components';
 
+import './x-login-view.scss';
+
 class XLoginView extends View {
   get template () {
     return require('./x-login-view.html');

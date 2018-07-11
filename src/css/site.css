@@ -17,6 +17,11 @@ html, body {
   height: 100%;
 }
 
+.scroll-y {
+  overflow-y: auto;
+  height: 100%;
+}
+
 @media (min-width: 576px) {
   .navbar-toggler {
     display: none;

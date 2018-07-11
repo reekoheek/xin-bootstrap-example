@@ -3,6 +3,8 @@ import { App } from '@xinix/xin/components';
 
 import '@xinix/xin/middlewares';
 
+import './x-shelf';
+import './x-drawer';
 import './x-sidemenu';
 
 class XApp extends App {

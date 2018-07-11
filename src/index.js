@@ -1,6 +1,7 @@
+import '@webcomponents/custom-elements';
 
 import 'bootstrap/dist/css/bootstrap.css';
-import './css/site.css';
+import './scss/site.scss';
 import 'open-iconic/font/css/open-iconic-bootstrap.css';
 
 import 'bootstrap';
