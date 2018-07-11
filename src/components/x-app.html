@@ -16,7 +16,8 @@
     <xin-pager>
       <x-login-view lazy-view uri="/login"></x-login-view>
       <x-home-view lazy-view uri="/"></x-home-view>
-      <x-user-single-view lazy-view uri="/user/new"></x-user-single-view>
+      <x-user-single-view lazy-view uri="/user/new" title="New User"></x-user-single-view>
+      <x-user-single-view lazy-view uri="/user/edit/{id}" title="Edit User"></x-user-single-view>
       <x-user-list-view lazy-view uri="/user/list[/skip/{skip}/limit/{limit}]"></x-user-list-view>
     </xin-pager>
   </div>

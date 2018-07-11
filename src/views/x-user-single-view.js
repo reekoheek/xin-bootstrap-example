@@ -8,6 +8,11 @@ class XUserSingleView extends View {
 
   get props () {
     return Object.assign({}, super.props, {
+      title: {
+        type: String,
+        value: 'Form',
+      },
+
       form: {
         type: Object,
         value: () => ({}),
@@ -19,13 +24,26 @@ class XUserSingleView extends View {
     super.focusing(parameters);
 
     if (parameters.id) {
-      throw new Error('Unimplemented yet with param id');
+      // FIXME: mock only
+      this.set('form', {
+        firstname: 'Foo',
+        lastname: 'Bar',
+        username: 'foo',
+        password: 'baz',
+      });
     } else {
       this.set('form', {});
     }
   }
 
   doSubmit (evt) {
+    evt.preventDefault();
+
+    // FIXME: mocked
+    this.__app.navigate('/user/list');
+  }
+
+  doDelete (evt) {
     evt.preventDefault();
 
     // FIXME: mocked

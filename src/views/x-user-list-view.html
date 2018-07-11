@@ -13,20 +13,20 @@
 
   <x-grid class="flex-fill">
     <div id="header">
-      <table class="table table-bordered table-striped">
+      <table class="table table-striped table-hover">
         <thead>
           <tr>
             <th width="100">First</th>
             <th width="100">Last</th>
             <th width="100">Username</th>
-            <th width="10"></th>
+            <th width="50"></th>
           </tr>
         </thead>
       </table>
     </div>
 
     <div id="body">
-      <table class="table table-bordered table-striped">
+      <table class="table table-striped table-hover">
         <tbody></tbody>
       </table>
 
@@ -36,7 +36,9 @@
             <td>[[row.firstname]]</td>
             <td>[[row.lastname]]</td>
             <td>[[row.username]]</td>
-            <td></td>
+            <td>
+              <a href="[[row | showLink:/user/edit/{id}]]" title="Show"><span class="oi oi-document"></span></a>
+            </td>
           </tr>
         </template>
       </xin-for>

@@ -4,7 +4,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="flex-fill">
-      <span class="navbar-brand">Add User</span>
+      <span class="navbar-brand">[[title]]</span>
     </div>
   </nav>
 
@@ -26,7 +26,11 @@
         <label>Password</label>
         <input type="password" class="form-control" placeholder="Password" value="{{form.password}}">
       </div>
-      <button type="submit" class="btn btn-primary">Save</button>
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-danger float-right" (click)="doDelete(evt)" hidden="[[parameters.id | not]]">Delete</button>
+      </div>
     </form>
   </div>
 </div>

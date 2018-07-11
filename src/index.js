@@ -1,12 +1,11 @@
 import '@webcomponents/custom-elements';
+import { bootstrap, Filter } from '@xinix/xin';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './scss/site.scss';
 import 'open-iconic/font/css/open-iconic-bootstrap.css';
 
 import 'bootstrap';
-
-import { bootstrap } from '@xinix/xin';
 
 (async function () {
   bootstrap({
@@ -23,6 +22,8 @@ import { bootstrap } from '@xinix/xin';
       },
     ],
   });
+
+  Filter.put('showLink', require('./filters/show-link').default());
 
   await import('./components/x-app');
 
