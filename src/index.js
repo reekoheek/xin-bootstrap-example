@@ -1,6 +1,8 @@
 import '@webcomponents/custom-elements';
 import { bootstrap, Filter } from '@xinix/xin';
 
+import '@xinix/xin/scss/xin.scss';
+import '@xinix/xin/scss/xin-components.scss';
 import 'bootstrap/dist/css/bootstrap.css';
 import './scss/site.scss';
 import 'open-iconic/font/css/open-iconic-bootstrap.css';
@@ -28,8 +30,6 @@ import 'bootstrap';
   await import('./components/x-app');
 
   document.addEventListener('started', () => {
-    setTimeout(() => {
-      document.body.removeAttribute('unresolved');
-    }, 100);
+    document.body.removeAttribute('unresolved');
   });
 })();

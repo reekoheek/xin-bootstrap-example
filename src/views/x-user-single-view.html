@@ -1,4 +1,4 @@
-<div style="overflow-y: auto; height: 100%">
+<div class="scroll-y h-100">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <button type="button" class="navbar-toggler">
       <span class="navbar-toggler-icon"></span>
@@ -10,14 +10,14 @@
 
   <div class="container my-3">
     <form (submit)="doSubmit(evt)">
-        <div class="form-group">
-          <label>First name</label>
-          <input type="text" class="form-control" placeholder="First name" value="{{form.firstname}}">
-        </div>
-        <div class="form-group">
-          <label>Last name</label>
-          <input type="text" class="form-control" placeholder="Last name" value="{{form.lastname}}">
-        </div>
+      <div class="form-group">
+        <label>First name</label>
+        <input type="text" class="form-control" placeholder="First name" value="{{form.firstname}}">
+      </div>
+      <div class="form-group">
+        <label>Last name</label>
+        <input type="text" class="form-control" placeholder="Last name" value="{{form.lastname}}">
+      </div>
       <div class="form-group">
         <label>Username</label>
         <input type="text" class="form-control" placeholder="Username" value="{{form.username}}">
@@ -29,7 +29,7 @@
 
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Save</button>
-        <button type="button" class="btn btn-danger float-right" (click)="doDelete(evt)" hidden="[[parameters.id | not]]">Delete</button>
+        <button type="button" class="btn btn-danger float-right" (click)="doDelete(evt)" hidden$="[[parameters.id | not]]">Delete</button>
       </div>
     </form>
   </div>

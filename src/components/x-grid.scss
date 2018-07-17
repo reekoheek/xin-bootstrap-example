@@ -7,9 +7,13 @@ x-grid {
 
   > #header {
     position: absolute;
+    z-index: 1;
+    background-color: #fff;
+    display: table;
   }
 
   > #body {
+    display: table;
     flex: 1;
     overflow-x: hidden;
     overflow-y: scroll;

@@ -1,5 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = function (env, { mode = 'development' }) {
   return {
@@ -8,28 +11,42 @@ module.exports = function (env, { mode = 'development' }) {
     entry: {
       index: './index.js',
     },
+    output: {
+      path: path.join(__dirname, 'www'),
+      filename: `js/[name]${mode === 'production' ? '.min' : ''}.js`,
+    },
     devtool: 'sourcemap',
     module: {
       rules: [
         {
-          test: /\.css$/,
-          use: [ 'style-loader', 'css-loader' ],
-        },
-        {
-          test: /\.scss$/,
-          use: [ 'style-loader', 'css-loader', 'sass-loader' ],
+          test: /\.s?css$/,
+          use: [
+            {
+              loader: MiniCssExtractPlugin.loader,
+              options: {
+                publicPath: '../',
+              },
+            },
+            'css-loader',
+            'sass-loader',
+          ],
         },
         {
           test: /\.html$/,
-          use: 'html-loader',
+          use: [
+            {
+              loader: 'html-loader',
+              options: { minimize: mode === 'production' },
+            },
+          ],
         },
         {
           test: /\.(svg|png|jpe?g|gif)(\?.*)?$/i,
           use: {
             loader: 'url-loader',
             options: {
-              limit: 1000,
-              name: './images/[name].[ext]',
+              limit: 50,
+              name: 'images/[name].[ext]',
             },
           },
         },
@@ -38,8 +55,8 @@ module.exports = function (env, { mode = 'development' }) {
           use: {
             loader: 'url-loader',
             options: {
-              limit: 1000,
-              name: './fonts/[name].[ext]',
+              limit: 50,
+              name: 'fonts/[name].[ext]',
             },
           },
         },
@@ -47,6 +64,19 @@ module.exports = function (env, { mode = 'development' }) {
     },
     plugins: [
       new HtmlWebpackPlugin({ template: 'index.html' }),
+      new MiniCssExtractPlugin({
+        filename: `css/[name]${mode === 'production' ? '.min' : ''}.css`,
+      }),
     ],
+    optimization: {
+      minimizer: [
+        new UglifyJsPlugin({
+          cache: true,
+          parallel: true,
+          sourceMap: true, // set to true if you want JS source maps
+        }),
+        new OptimizeCSSAssetsPlugin({}),
+      ],
+    },
   };
 };
