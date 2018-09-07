@@ -3,6 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
+const { GenerateSW } = require('workbox-webpack-plugin');
+// const { InjectManifest } = require('workbox-webpack-plugin');
 
 module.exports = function (env, { mode = 'development' }) {
   return {
@@ -67,6 +70,31 @@ module.exports = function (env, { mode = 'development' }) {
       new MiniCssExtractPlugin({
         filename: `css/[name]${mode === 'production' ? '.min' : ''}.css`,
       }),
+      new WebpackPwaManifest({
+        name: 'Xin Bootstrap',
+        short_name: 'XinBootstrap',
+        description: 'Awesome Xin Bootstrap Template!',
+        start_url: '/',
+        theme_color: '#ffffff',
+        background_color: '#ffffff',
+        display: 'standalone',
+        // crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
+        icons: [
+          {
+            src: path.resolve('src/img/xin.png'),
+            sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
+          },
+          {
+            src: path.resolve('src/img/xin.png'),
+            size: '1024x1024', // you can also use the specifications pattern
+          },
+        ],
+      }),
+      new GenerateSW({
+        importWorkboxFrom: 'local',
+        skipWaiting: true,
+        clientsClaim: true,
+      }),
     ],
     optimization: {
       minimizer: [
@@ -77,6 +105,13 @@ module.exports = function (env, { mode = 'development' }) {
         }),
         new OptimizeCSSAssetsPlugin({}),
       ],
+    },
+    devServer: {
+      disableHostCheck: true,
+      contentBase: path.join(__dirname, 'www'),
+      // https: true,
+      // port: 8443,
+      host: '0.0.0.0',
     },
   };
 };
