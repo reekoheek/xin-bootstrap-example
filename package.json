@@ -10,7 +10,7 @@
     "coverage": "nyc --reporter=lcov npm test",
     "dev": "webpack-dev-server",
     "build": "webpack",
-    "precommit": "npm run lint"
+    "precommit": "npm run lint && npm test"
   },
   "author": "Ganesha <reekoheek@gmail.com> (http://sagara.id)",
   "license": "MIT",
